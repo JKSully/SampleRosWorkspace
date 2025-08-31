@@ -1,0 +1,115 @@
+# C/C++
+If:
+  PathMatch: [.*\.cc, .*\.cpp, .*\.hh,.*\.hpp, .*\.inl, .*\.c, .*\.h]
+
+Diagnostics:
+  ClangTidy:
+    Add:
+      - bugprone*
+      - modernize*
+      - performance*
+      - readability*
+    Remove:
+      - readability-identifier-length
+      - readability-named-parameter
+      - readability-qualified-auto
+      - bugprone-easily-swappable-parameters
+      - modernize-use-trailing-return-type
+      - modernize-use-nodiscard
+      - modernize-use-default-member-init
+      - readability-function-cognitive-complexity
+      - readability-magic-numbers
+    CheckOptions:
+      llvm-namespace-comment.ShortNamespaceLines: 10
+      llvm-namespace-comment.SpacesBeforeComments: 2
+      misc-unused-parameters.StrictMode: 1
+      readability-braces-around-statements.ShortStatementLines: 2
+    # type names
+      readability-identifier-naming.ClassCase: CamelCase
+      readability-identifier-naming.EnumCase: CamelCase
+      readability-identifier-naming.UnionCase: CamelCase
+    # function names
+      readability-identifier-naming.FunctionCase: camelBack
+    # method names
+      readability-identifier-naming.MethodCase: camelBack
+    # variable names
+      readability-identifier-naming.VariableCase: lower_case
+      readability-identifier-naming.ProtectedMemberSuffix: '_'
+      readability-identifier-naming.PrivateMemberSuffix: '_'
+    # const static or global variables are UPPER_CASE
+      readability-identifier-naming.EnumConstantCase: UPPER_CASE
+      readability-identifier-naming.StaticVariableCasePrefix: 's_'
+      readability-identifier-naming.StaticConstantCase: UPPER_CASE
+      readability-identifier-naming.GlobalConstantCase: UPPER_CASE
+      readability-identifier-naming.ClassConstantCase: UPPER_CASE
+  # clangd 14
+  # UnusedIncludes: Strict
+
+Completion:
+  AllScopes: No
+
+# clangd 14
+InlayHints:
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes
+
+Hover:
+  ShowAKA: Yes
+---
+# C
+If:
+  PathMatch: [.*\.c]
+
+CompileFlags:
+  Add: [--std=c17, -Wall, -Wextra, -Wpedantic]
+---
+# C++
+If:
+  PathMatch: [.*\.cc, .*\.cpp, .*\.hpp, .*\.hh]
+
+CompileFlags:
+  Add: [--std=c++17, -Wall, -Wextra, -Wpedantic]
+
+Diagnostics:
+  ClangTidy:
+    Add:
+      - cppcoreguidelines*
+      - google-build-explicit-make-pair
+      - google-default-arguments
+      - google-readability-casting
+      - misc-*
+    Remove:
+      - cppcoreguidelines-pro-bounds-array-to-pointer-decay
+      - cppcoreguidelines-pro-type-vararg
+      - cppcoreguidelines-avoid-magic-numbers
+    CheckOptions:
+      misc-non-private-member-variables-in-classes.IgnoreClassesWithAllMemberVariablesBeingPublic: true
+---
+# C source
+If:
+  PathMatch: [.*\.c]
+
+CompileFlags:
+  Add: [-xc]
+---
+# C header
+If:
+  PathMatch: [.*\.h]
+
+CompileFlags:
+  Add: [-xc-header]
+---
+# C++ source
+If:
+  PathMatch: [.*\.cc, .*\.cpp]
+
+CompileFlags:
+  Add: [-xc++]
+---
+# C++ header
+If:
+  PathMatch: [.*\.hpp, .*\.inl, .*\.hh]
+
+CompileFlags:
+  Add: [-xc++-header]

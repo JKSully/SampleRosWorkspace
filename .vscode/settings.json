@@ -1,0 +1,23 @@
+{
+    "clangd.onConfigChanged": "prompt",
+    "clangd.arguments": [
+        "--compile-commands-dir=build",
+        "--enable-config",
+        "--background-index",
+        "--clang-tidy",
+        "--header-insertion=never",
+        "--query-driver=/usr/bin/g++"
+    ],
+    "python.autoComplete.extraPaths": [
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages",
+        // "/build/my_package",
+        // "/build/test_package"
+    ],
+    "python.analysis.extraPaths": [
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages",
+        // "/build/my_package",
+        // "/build/test_package"
+    ]
+}

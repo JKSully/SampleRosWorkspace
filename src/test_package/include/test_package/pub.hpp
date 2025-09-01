@@ -15,8 +15,8 @@
 #ifndef TEST_PACKAGE__PUB_HPP_
 #define TEST_PACKAGE__PUB_HPP_
 
-#include <memory>
 #include <chrono>
+#include <memory>
 #include <string>
 
 #include "rclcpp/executor.hpp"

@@ -12,12 +12,12 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#include "test_package/sub.hpp"
+#include "eigen_pubsub/pub.hpp"
 
-int main(int argc, char ** argv)
+int main(int argc, char** argv)
 {
   rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<MySubscriber>());
+  rclcpp::spin(std::make_shared<EigenPublisher>());
   rclcpp::shutdown();
   return 0;
 }

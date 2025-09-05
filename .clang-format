@@ -56,6 +56,8 @@ SpaceAfterCStyleCast: false
 SpaceAfterControlStatementKeyword: true
 SpaceBeforeAssignmentOperators: true
 
+PointerAlignment: Middle
+
 # Configure each individual brace in BraceWrapping
 BreakBeforeBraces: Custom
 

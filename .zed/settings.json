@@ -1,0 +1,17 @@
+{
+  "lsp": {
+    "clangd": {
+      "binary": {
+        "arguments": [
+          "--compile-commands-dir=build",
+          "--enable-config",
+          "--background-index",
+          "--clang-tidy",
+          "--header-insertion=never",
+          "--query-driver=/usr/bin/g++"
+        ]
+      }
+    }
+  },
+  "tab_size": 2
+}

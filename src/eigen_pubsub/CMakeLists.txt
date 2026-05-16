@@ -21,11 +21,17 @@ find_package(Eigen3 REQUIRED NO_MODULE)
 
 add_executable(publisher src/pub.cpp)
 target_link_libraries(publisher PRIVATE rclcpp::rclcpp ${std_msgs_TARGETS} Eigen3::Eigen)
-target_include_directories(publisher PRIVATE include)
+target_include_directories(publisher
+  PUBLIC
+    "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+    "$<INSTALL_INTERFACE:include/${PROJECT_NAME}>")
 
 add_executable(subscriber src/sub.cpp)
 target_link_libraries(subscriber PRIVATE rclcpp::rclcpp ${std_msgs_TARGETS} Eigen3::Eigen)
-target_include_directories(subscriber PRIVATE include)
+target_include_directories(subscriber
+  PUBLIC
+    "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+    "$<INSTALL_INTERFACE:include/${PROJECT_NAME}>")
 
 install(TARGETS
   publisher
